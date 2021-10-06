@@ -54,6 +54,10 @@ public class ProductService {
 		return productRepository.findById(productId);
 	}
 	
+	public List<Product> listAllProducts() {
+		return (List<Product>) productRepository.findAll();
+	}
+	
 	
 	public List<Buyer> listAllBids(String productId) {
 	return buyerServiceFeignClient.getProductBids(productId);	

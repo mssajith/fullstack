@@ -38,6 +38,7 @@ public class SellerController {
 	@Autowired
 	ProductService productService;
 	
+	@Autowired
 	ProductRepository productRepository; 
 	
 	@PostMapping(value = "/addProduct")
@@ -66,6 +67,11 @@ public class SellerController {
 		productService.deleteProductById(productId);
 	}
 	
+	@GetMapping(value = "/listProducts")
+	public List<Product> listProducts() {
+		return productService.listAllProducts();
+	}
+	
 	
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	@ExceptionHandler(MethodArgumentNotValidException.class)
@@ -82,7 +88,7 @@ public class SellerController {
 	
 	@GetMapping("/test")
 	public String test() {
-		return "Test Success";
+		return "Test Success Latest";
 	}
 	
 	@GetMapping("/clear")
