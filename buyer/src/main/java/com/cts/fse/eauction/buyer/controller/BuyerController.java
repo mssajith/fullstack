@@ -32,7 +32,7 @@ public class BuyerController {
 	
 	@GetMapping("/test")
 	public String test() {
-		return "Test Success";
+		return "Test Success Latest Bid";
 	}
 	
 	@GetMapping("/clear")
