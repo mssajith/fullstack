@@ -14,7 +14,7 @@ spring:
     inetutils:
       ignoredInterfaces:
         - docker0
-        - ecs-eth0 #ecs private network
+        - eth0 #ecs private network
         - veth.*
 eureka:
   client:
