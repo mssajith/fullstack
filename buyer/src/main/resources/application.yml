@@ -19,4 +19,5 @@ spring:
 eureka:
   client:
 	service-url:
-	  defaultZone: http://eureka-env.eba-znxfshhb.us-east-2.elasticbeanstalk.com:8761/eureka        		    	
+	  defaultZone: http://10.0.0.144:8761/eureka	  
+	          		    	
