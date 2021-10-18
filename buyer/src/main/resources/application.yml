@@ -18,6 +18,5 @@ spring:
         - veth.*
 eureka:
   client:
-	service-url:
-	  defaultZone: http://3.144.237.62:8761/eureka	  
-	          		    	
+    service-url:
+      defaultZone: http://3.144.237.62:8761/eureka	          		    	
