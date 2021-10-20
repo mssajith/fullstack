@@ -1,0 +1,8 @@
+applications:
+  - name: api-gateway
+    disk_quota: 1G
+    instances: 1
+    memory: 1G
+    path: target/SecuredGateWay-0.0.1-SNAPSHOT.jar
+    services:
+      - myservicediscovery
