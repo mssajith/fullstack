@@ -36,7 +36,7 @@ public class CloudConfiguration {
     private static final String AWS_METADATA_URL = "http://169.254.170.2/" + AWS_API_VERSION + "/metadata";
     // Used as string.contains to search correct container
     // Make sure that your Docker container in AWS Task definition has this as part of its name
-    private static final String DOCKER_CONTAINER_NAME = "buyer-api";
+    private static final String DOCKER_CONTAINER_NAME = "buyerservice";
     
     private final Environment env;
     
