@@ -1,0 +1,77 @@
+.productDetail {
+    font-weight: bold;
+    padding: 10px;
+}
+.btnstyle {
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 4px;
+    width: 120px;
+}
+
+.rowstyle {
+    margin-top: 40px;
+    width: 700px;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 30px;
+}
+
+.inputstyle{
+    padding: 5px;
+    width: 342px;
+    float: right;
+    margin-bottom: -16px;
+}
+
+.rowwidth{
+    width:600px;
+    margin-bottom: 10px;
+}
+
+.bidholder{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    width: 600px;
+    font-weight: bold;
+    margin-top: 50px;
+    margin-bottom: 25px;
+
+}
+
+.bidtable{
+    width:800px;
+}
+
+.dropdown{
+    width: 180px;
+    height: 40px;
+}
+
+.col {
+    display:inline-block;
+}
+
+.col1 {
+    width:180px;
+
+}
+
+th {
+    padding:7px;
+
+}
+td {
+    padding: 7px;
+    text-align: left;
+}
+thead {
+    background-color: #b8c3d2;
+}
+
+table {
+    width: 700px;
+}
+
