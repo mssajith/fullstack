@@ -2,6 +2,11 @@ package com.cts.fse.eauction.buyer.config.aws;
 
 import com.fasterxml.jackson.annotation.*;
 
+/**
+ * 
+ * @author 297655
+ *
+ */
 public class Container {
     private String dockerID;
     private String name;

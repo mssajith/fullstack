@@ -78,8 +78,7 @@ public class ProductService {
 				
 			}
 			
-			System.out.println("Bid End Date AFter Conversion " + bidDate.toString());
-			
+			logger.info("Bid End Date AFter Conversion " + bidDate.toString());
 			if (bidDate.compareTo(Calendar.getInstance().getTime()) <= 0) {
 				throw new SellerValidationException("Product Bid End Date is Already Expired , Cannot Delete the Product :: " + productId);
 			}
@@ -102,7 +101,7 @@ public class ProductService {
 
 	private void validateCategory(Product product) throws SellerValidationException {
 		if (Arrays.stream(ProductCategory.values()).anyMatch(e-> e.getCategroyName().equalsIgnoreCase(product.getCategory()))) {
-			System.out.println("Product Category is ::: " + product.getCategory());
+			logger.info("Product Category is ::: " + product.getCategory());
 		} else {
 			throw new SellerValidationException("Product Category " + product.getCategory() + " is not a Valid Category.");
 		}
@@ -110,16 +109,13 @@ public class ProductService {
 	
 	
 	private void validateBidEndDate(String bidEndDate) throws SellerValidationException {
-		System.out.println("The Bid End Date is :: " + bidEndDate);
+		logger.info("The Bid End Date is :: " + bidEndDate);
 		try {
 			Date bidDate = sdf.parse(bidEndDate);
-			
-			System.out.println("Bid End Date AFter Conversion " + bidDate.toString());
+			logger.info("Bid End Date AFter Conversion " + bidDate.toString());
 			
 			if (bidDate.compareTo(Calendar.getInstance().getTime()) <= 0) {
-			
-//			if (bidDate.before(Calendar.getInstance().getTime())) {
-				System.out.println("Bid Date is Before Current Date ");
+				logger.info("Bid Date is Before Current Date ");
 				throw new SellerValidationException("Bid End Date should be a future Date");
 			}
 			

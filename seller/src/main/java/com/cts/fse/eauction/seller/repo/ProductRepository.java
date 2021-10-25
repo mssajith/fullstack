@@ -8,7 +8,6 @@ import com.cts.fse.eauction.seller.model.Product;
 
 @Repository
 @EnableScan
-//public interface ProductRepository extends MongoRepository<Product, String> {
 public interface ProductRepository extends CrudRepository<Product, String> {
 	public Product findByProductName(String productName);
 }

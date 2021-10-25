@@ -11,7 +11,11 @@ import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.client.builder.AwsClientBuilder;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClientBuilder;
-
+/**
+ * Configuration class for the Dynamo DB
+ * @author 297655
+ *
+ */
 @Configuration
 @EnableDynamoDBRepositories(basePackages = "com.cts.fse.eauction.buyer.repo")
 public class DynomoDBConfig {

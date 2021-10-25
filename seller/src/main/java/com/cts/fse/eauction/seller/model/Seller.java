@@ -1,5 +1,6 @@
 package com.cts.fse.eauction.seller.model;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
@@ -19,9 +20,11 @@ public class Seller {
 	private String city;
 	private String state;
 	private String pin;
-	@Size(min = 10, max = 10)
+	@Size(min = 5, max = 10)
 	private String phoneNumber;
+	
 	@NotBlank(message = "Email is Mandatory")
+	@Email(message = "Email should be valid")
 	private String email;
 
 	public String getFirstName() {

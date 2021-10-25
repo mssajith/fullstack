@@ -11,6 +11,7 @@ import javax.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,7 +21,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;
 
@@ -33,6 +33,7 @@ import com.cts.fse.eauction.seller.service.ProductService;
 @Controller
 @RestController
 @RequestMapping(value = "/seller")
+@CrossOrigin(origins = "*", maxAge = 3600, allowedHeaders={"x-auth-token", "x-requested-with", "x-xsrf-token","Authorization"})
 public class SellerController {
 	
 	@Autowired
@@ -43,22 +44,12 @@ public class SellerController {
 	
 	@PostMapping(value = "/addProduct")
 	public String addProduct(@Valid @RequestBody Product product) throws SellerValidationException {
-		
-		/*
-		 * if (null != product) { System.out.println("Product Values Are");
-		 * System.out.println(product.getProductName()); }
-		 * 
-		 * productRepository.save(product); return "Saved Successfully";
-		 */
-		
 		return productService.execute(product);
 	}
 	
 	
 	@GetMapping(value = "/show-bids/{productId}")
 	public List<Buyer> getProductBids(@PathVariable String productId) {
-//		Optional<Product> product = productService.getProductById(productId);
-		
 		return productService.listAllBids(productId);
 	}
 	
@@ -86,16 +77,10 @@ public class SellerController {
 	    return errors;
 	}
 	
-	@GetMapping("/test")
-	public String test() {
-		return "Test Success Latest";
-	}
-	
 	@GetMapping("/clear")
 	public void clear() {
 		productRepository.deleteAll();
 	}
-	
 	
 	@ExceptionHandler({ SellerValidationException.class })
 	public String databaseError(SellerValidationException exception) {

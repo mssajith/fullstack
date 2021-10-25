@@ -29,44 +29,45 @@ public class BuyerController {
 	BuyerService buyerService;
 	@Autowired
 	SellerServiceInterface sellerServiceInterface;
-	
+
 	@GetMapping("/test")
 	public String test() {
 		return "Test Success Latest Bid";
 	}
-	
+
 	@GetMapping("/clear")
 	public void clear() {
 		buyerRepository.deleteAll();
 	}
-	
+
 	@PostMapping("/place-bid")
-	public String placeBid(@RequestBody Buyer buyer) {
-		System.out.println(buyer.getFirstName());
-		System.out.println(buyer.getLastName());
+	public String placeBid(@Valid @RequestBody Buyer buyer) {
 		buyerService.execute(buyer);
 		return "success";
 	}
-	
-	 @GetMapping("/fetchProduct/{id}")
-	 public Product fetchProduct(@PathVariable String id) {
 
-	  return sellerServiceInterface.getProduct(id);
-	 }
-	
-	 @PutMapping("/delete/{productId}")
-	 public void deletProduct(@PathVariable String productId) throws BuyerValidationException {
-		 
-		 buyerService.deleteProduct(productId);
-	 }
-	 
-	 @GetMapping("/fetchAllBids/{productId}")
-	 public List<Buyer> getAllBids(@PathVariable String productId){
-		 return buyerService.getAllBidsByProduct(productId);
-	 }
-	 
-	 @PutMapping("update-bid/{productId}/{buyerEmailld}/{newBidAmount}")
-	 public void updateBidAmount(@PathVariable String productId, @PathVariable String buyerEmailId, @PathVariable String newBidAmount) throws BuyerValidationException {
-		 buyerService.updateBidAmount(productId, buyerEmailId, newBidAmount);
-	 }
+	@GetMapping("/fetchProduct/{id}")
+	public Product fetchProduct(@PathVariable String id) {
+
+		return sellerServiceInterface.getProduct(id);
+	}
+
+	@PutMapping("/delete/{productId}")
+	public void deletProduct(@PathVariable String productId)
+			throws BuyerValidationException {
+
+		buyerService.deleteProduct(productId);
+	}
+
+	@GetMapping("/fetchAllBids/{productId}")
+	public List<Buyer> getAllBids(@PathVariable String productId) {
+		return buyerService.getAllBidsByProduct(productId);
+	}
+
+	@PutMapping("update-bid/{productId}/{buyerEmailId}/{newBidAmount}")
+	public void updateBidAmount(@PathVariable String productId,
+			@PathVariable String buyerEmailId, @PathVariable String newBidAmount)
+			throws BuyerValidationException {
+		buyerService.updateBidAmount(productId, buyerEmailId, newBidAmount);
+	}
 }

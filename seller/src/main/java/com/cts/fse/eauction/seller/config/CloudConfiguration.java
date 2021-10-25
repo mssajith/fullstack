@@ -50,7 +50,6 @@ public class CloudConfiguration {
      * @return 
      */
     @Bean
-//    @Profile("fargate")
     public EurekaInstanceConfigBean eurekaInstanceConfig(InetUtils inetUtils) {
         log.info("Customize EurekaInstanceConfigBean for AWS");
         log.info("Docker container should have name containing " + DOCKER_CONTAINER_NAME);
