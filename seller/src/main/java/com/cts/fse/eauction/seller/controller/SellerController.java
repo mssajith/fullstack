@@ -63,6 +63,11 @@ public class SellerController {
 		return productService.listAllProducts();
 	}
 	
+	@PutMapping(value = "/deleteBid/{bidId}")
+	public void deleteBid(@PathVariable String bidId){
+		productService.deleteBid(bidId);
+	}
+	
 	
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	@ExceptionHandler(MethodArgumentNotValidException.class)

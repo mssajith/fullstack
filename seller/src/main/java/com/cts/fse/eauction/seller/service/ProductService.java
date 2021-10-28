@@ -20,6 +20,8 @@ import com.cts.fse.eauction.seller.feignclient.Buyer;
 import com.cts.fse.eauction.seller.feignclient.BuyerServiceFeignClient;
 import com.cts.fse.eauction.seller.model.Product;
 import com.cts.fse.eauction.seller.repo.ProductRepository;
+import com.cts.fse.eauction.seller.sqs.Message;
+import com.cts.fse.eauction.seller.sqs.Producer;
 
 @Service
 public class ProductService {
@@ -32,6 +34,10 @@ public class ProductService {
 	
 	@Autowired
 	BuyerServiceFeignClient buyerServiceFeignClient;
+	
+	@Autowired
+	Producer producer;
+	
 	
 	public String execute(Product product) throws SellerValidationException {
 		if (null != product) {
@@ -136,6 +142,12 @@ public class ProductService {
 		} catch (Exception ex) {
 			throw new SellerValidationException("Starting Price should be a Number");
 		}
+	}
+	
+	public void deleteBid(String bidId){
+		Message msg = new Message();
+		msg.setMsg(bidId);
+		producer.sendMessage(msg);
 	}
 	
 }
